@@ -1,8 +1,8 @@
 """
-Unit tests for the ``src.main`` module.
+Unit tests for the ``poker.main`` module.
 """
 
-from src import main
+from poker import main
 
 
 def test__main():

@@ -4,16 +4,19 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry]
-name = "python-template"
+name = "poker"
 version = "0.0.0"
-description = ""
+description = "Texas hold 'em variant of Poker."
 authors = ["Bilbottom"]
 readme = "README.md"
-packages = [{include = "src"}]
-#package-mode = false
+packages = [{include = "poker"}]
+
+#[tool.poetry.scripts]
+#poker = "poker.__main__:main"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+playing-cards = {git = "https://github.com/Bilbottom/playing-cards", rev = "v0.0.2"}
 
 [tool.poetry.group]
 dev.optional = true
@@ -29,7 +32,8 @@ pytest-cov = "^4.1.0"
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src --cov-fail-under=80"
+addopts = "--cov=poker --cov-report term-missing --cov-fail-under=80"
+markers = "e2e: end-to-end tests"
 testpaths = ["tests"]
 
 
