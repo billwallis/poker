@@ -1,26 +1,29 @@
+[project]
+name = "poker"
+version = "0.0.0"
+description = "Texas hold 'em variant of Poker."
+authors = [{name = "Bilbottom"}]
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dynamic = ["dependencies"]
+
+#[project.scripts]
+#poker = "poker.__main__:main"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry]
-name = "poker"
-version = "0.0.0"
-description = "Texas hold 'em variant of Poker."
-authors = ["Bilbottom"]
-readme = "README.md"
 packages = [{include = "poker"}]
 
-#[tool.poetry.scripts]
-#poker = "poker.__main__:main"
-
 [tool.poetry.dependencies]
-python = "^3.11"
 playing-cards = {git = "https://github.com/Bilbottom/playing-cards", rev = "v0.0.2"}
 
 [tool.poetry.group]
-dev.optional = true
-test.optional = true
+dev.optional = false
+test.optional = false
 
 [tool.poetry.group.dev.dependencies]
 coverage-badge = "^1.1.0"

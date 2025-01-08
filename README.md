@@ -28,6 +28,6 @@ This is just a personal project (so this instruction is just for me).
 The Python packaging is managed with [Poetry](https://python-poetry.org/); check which version is in the [poetry.lock](poetry.lock) file.
 
 ```bash
-poetry install --sync --with dev,test
+poetry install
 pre-commit install --install-hooks
 ```
