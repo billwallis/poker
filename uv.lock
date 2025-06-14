@@ -154,7 +154,7 @@ wheels = [
 [[package]]
 name = "playing-cards"
 version = "0.0.2"
-source = { git = "https://github.com/Bilbottom/playing-cards?rev=v0.0.2#4a4f2267ed0aff9dd2e01cc7ada30c6124243d74" }
+source = { git = "https://github.com/billwallis/playing-cards?rev=v0.0.2#4a4f2267ed0aff9dd2e01cc7ada30c6124243d74" }
 
 [[package]]
 name = "pluggy"
@@ -184,7 +184,7 @@ test = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "playing-cards", git = "https://github.com/Bilbottom/playing-cards?rev=v0.0.2" }]
+requires-dist = [{ name = "playing-cards", git = "https://github.com/billwallis/playing-cards?rev=v0.0.2" }]
 
 [package.metadata.requires-dev]
 dev = [

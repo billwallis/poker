@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "poker"
 version = "0.0.0"
 description = "Texas hold 'em variant of Poker."
-authors = [{name = "Bilbottom"}]
+authors = [{name = "billwallis"}]
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -32,7 +32,7 @@ include = ["poker"]
 
 
 [tool.uv.sources]
-playing-cards = {git = "https://github.com/Bilbottom/playing-cards", rev = "v0.0.2"}
+playing-cards = {git = "https://github.com/billwallis/playing-cards", rev = "v0.0.2"}
 
 
 [tool.pytest.ini_options]
