@@ -1,7 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/pyproject.json
-
 [build-system]
-requires = ["uv_build>=0.8"]
+requires = ["uv_build"]
 build-backend = "uv_build"
 
 [project]
@@ -10,28 +9,26 @@ version = "0.0.0"
 description = "Texas hold 'em variant of Poker."
 authors = [{name = "billwallis"}]
 readme = "README.md"
-license = {file = "LICENSE"}
+license-files = ["LICENSE"]
 requires-python = ">=3.13"
 dependencies = [
     "playing-cards",
 ]
-
-#[project.scripts]
-#poker = "poker.__main__:main"
+#scripts.poker = "poker.__main__:main"
 
 [dependency-groups]
 dev = [
-    "poethepoet>=0.42.1",
-    "pre-commit>=4.5.1",
+    "poethepoet>=0.46.0",
+    "pre-commit>=4.6.0",
 ]
 test = [
-    "pytest>=9.0.2",
-    "pytest-cov>=7.0.0",
+    "coverage>=7.13.5",
+    "covdefaults>=2.3.0",
+    "pytest>=9.0.3",
 ]
 
 
 [tool.uv]
-required-version = ">=0.8"
 default-groups = "all"
 
 [tool.uv.sources]
@@ -51,7 +48,11 @@ upgrade.shell = """
     uv sync --refresh --upgrade
     uv run pre-commit autoupdate
 """
-test = "uv run pytest -vvv"
+test.shell = """
+    uv run coverage run -m pytest -vvv
+    uv run coverage report --no-skip-covered
+    uv run coverage xml --quiet
+"""
 
 [tool.poe.tasks.lint]
 control.expr = "sys.platform"
@@ -75,9 +76,16 @@ shell = """
 
 
 [tool.pytest.ini_options]
-addopts = "--cov=src --cov-report term-missing --cov-fail-under=80"
 markers = "e2e: end-to-end tests"
 testpaths = ["tests"]
+
+[tool.coverage]
+run.plugins = ["covdefaults"]  # https://youtu.be/70T6OxKwxm0
+report.fail_under = 80
+report.exclude_lines = [
+    "@pytest.mark.skip",
+    "@pytest.mark.xfail",
+]
 
 
 [tool.ruff]
